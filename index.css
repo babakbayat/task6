@@ -1,8 +1,8 @@
 :root {
   --opec-black: rgba(45, 45, 45, 0.444);
   --border-color: rgba(34, 35, 74, 0.764);
-  --slider-w: 400px;
-  --slider-h: 270px;
+  --slider-w: 800px;
+  --slider-h: 470px;
   --abs-padding: 10px;
   --img-w: calc(var(--slider-w) - 2 * var(--abs-padding));
   --img-h: calc(var(--slider-h) - 2 * var(--abs-padding));
@@ -33,10 +33,12 @@ body {
   object-fit: cover;
   position: absolute;
   display: none;
-  height: var(--img-h);
+  /* height: var(--img-h); */
+  height: calc(100% - var(--abs-padding) * 2);
   inset: var(--abs-padding);
-  width: var(--img-w);
+  /* width: var(--img-w); */
   border-radius: var(--radius);
+  width: calc(100% - var(--abs-padding) * 2);
 }
 .slider img.active {
   display: block;
@@ -113,9 +115,15 @@ body {
 
 @media screen and (max-width: 400px) {
   .slider {
-    --slider-w: 100%;
-    --slider-h: 200px;
-    --img-w: calc(var(--slider-w) - 2 * var(--abs-padding));
-    --img-h: calc(var(--slider-h) - 2 * var(--abs-padding));
+    height: calc(var(--slider-h) / 2);
+  }
+  .status {
+    font-size: 1.7rem;
+  }
+}
+@media screen and (max-width: 300px) {
+  .status {
+    font-size: 1rem;
+    top: 10px;
   }
 }
