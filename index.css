@@ -1,0 +1,121 @@
+:root {
+  --opec-black: rgba(45, 45, 45, 0.444);
+  --border-color: rgba(34, 35, 74, 0.764);
+  --slider-w: 400px;
+  --slider-h: 270px;
+  --abs-padding: 10px;
+  --img-w: calc(var(--slider-w) - 2 * var(--abs-padding));
+  --img-h: calc(var(--slider-h) - 2 * var(--abs-padding));
+  --radius: 22px;
+  --active-pagination: rgb(36, 38, 36);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--opec-black);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 0 55px;
+}
+
+.slider {
+  border: 2px solid var(--border-color);
+  width: var(--slider-w);
+  height: var(--slider-h);
+  border-radius: var(--radius);
+  /* overflow: hidden; */
+  /* padding: 1rem; */
+  position: relative;
+}
+.slider img {
+  object-fit: cover;
+  position: absolute;
+  display: none;
+  height: var(--img-h);
+  inset: var(--abs-padding);
+  width: var(--img-w);
+  border-radius: var(--radius);
+}
+.slider img.active {
+  display: block;
+  animation: fadein 0.5s ease-in both;
+}
+.slider button.navigation {
+  padding: 10px;
+  border-radius: var(--radius);
+}
+
+.previous,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  width: 100px;
+  opacity: 0.5;
+  cursor: pointer;
+  z-index: 10;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+}
+.previous {
+  right: -50px;
+}
+.next {
+  left: -50px;
+}
+.pagination {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  gap: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+.pagination button {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  background-color: var(--border-color);
+  border-radius: 100%;
+  border: none;
+}
+
+.pagination button.active {
+  background-color: var(--active-pagination);
+}
+
+.status {
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  color: white;
+  font-size: 3rem;
+  font-weight: 700;
+  left: 50%;
+  line-height: 0;
+  transform: translateX(-50%);
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .slider {
+    --slider-w: 100%;
+    --slider-h: 200px;
+    --img-w: calc(var(--slider-w) - 2 * var(--abs-padding));
+    --img-h: calc(var(--slider-h) - 2 * var(--abs-padding));
+  }
+}
